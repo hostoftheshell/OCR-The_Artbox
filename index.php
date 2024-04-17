@@ -9,24 +9,24 @@
     </head>
     <body>
         <?php 
-        // Include the file containing header
+        // Inclut le fichier contenant le header
         require_once(__DIR__ . '/includes/header.php'); ?>
         <main>
         <div id="liste-oeuvres">
     <?php
-    // Include the file containing artwork data
+    // Inclut le fichier contenant les données des œuvres
     require_once(__DIR__ . '/includes/oeuvres.php');
 
-    // Check if $oeuvres is set and not empty
+    // Vérifie si $oeuvres est défini et non vide
     if (isset($oeuvres) && !empty($oeuvres)) {
         foreach ($oeuvres as $oeuvre) {
-            // Sanitize artwork data before using it
+            // Sanitize les données des illustrations avant de les utiliser
             $id = isset($oeuvre['id']) ? htmlspecialchars($oeuvre['id']) : '';
             $image = isset($oeuvre['image']) ? htmlspecialchars($oeuvre['image']) : '';
             $title = isset($oeuvre['title']) ? htmlspecialchars($oeuvre['title']) : '';
             $author = isset($oeuvre['author']) ? htmlspecialchars($oeuvre['author']) : '';
 
-            // Output HTML for each artwork
+            // Affiche des informations pour chaque œuvre d'art
             ?>
             <article class="oeuvre">
                 <a href="oeuvre.php?id=<?php echo $id; ?>">
@@ -38,14 +38,14 @@
             <?php
         }
     } else {
-        // Handle case when $oeuvres is not available or empty
+        // Gère le cas lorsque $œuvres n'est pas disponible ou vide
         echo "<p>Aucune œuvre disponible pour le moment.</p>";
     }
     ?>
 </div>
         </main>
         <?php 
-        // Include the file containing header
+        // Inclut le fichier contenant le footer
         require_once(__DIR__ . '/includes/footer.php'); ?>
     </body>
 </html>

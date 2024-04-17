@@ -10,19 +10,23 @@
 </head>
 
 <body>
-    <?php require_once(__DIR__ . '/includes/header.php'); ?>
+    <?php 
+    // Inclut le fichier contenant le header
+    require_once(__DIR__ . '/includes/header.php'); ?>
     <main>
-        <?php include_once(__DIR__ . '/includes/oeuvres.php');
-        // Check if 'id' is set in the URL and it matches an artwork's id
+        <?php 
+        // Inclut le fichier contenant les données des œuvres
+        include_once(__DIR__ . '/includes/oeuvres.php');
+        // Vérifie si l'id est défini dans l'URL et s'il correspond à l'id d'une œuvre d'art.
         if (isset($_GET['id'])) {
             $selected_artwork = null;
             foreach ($oeuvres as $oeuvre) {
                 if ($_GET['id'] == $oeuvre['id']) {
                     $selected_artwork = $oeuvre;
-                    break; // Exit loop once the artwork is found
+                    break; // Quitte la boucle une fois l’œuvre trouvée
                 }
             }
-            // Display detailed information if an artwork is selected
+            // Affiche des informations détaillées si une œuvre d'art est sélectionnée
             if ($selected_artwork) :
         ?>
                 <article id="detail-oeuvre">
@@ -36,17 +40,19 @@
                     </div>
             <?php
             else :
-                // Handle case where 'id' does not match any artwork
+                // Gère le cas où l'id ne correspond à aucune illustration
                 echo "<p>Aucune illustration trouvée pour l'ID fourni.</p>";
             endif;
         } else {
-            // Handle case where 'id' is not set in the URL
+            // Gère le cas où l'id n'est pas défini dans l'URL
             echo "<p>Aucune œuvre sélectionnée.</p>";
         }
             ?>
                 </article>
     </main>
-    <?php require_once(__DIR__ . '/includes/footer.php'); ?>
+    <?php 
+    // Inclut le fichier contenant le footer
+    require_once(__DIR__ . '/includes/footer.php'); ?>
 </body>
 
 </html>
