@@ -10,11 +10,11 @@
 </head>
 
 <body>
-    <?php 
+    <?php
     // Inclut le fichier contenant le header
     require_once(__DIR__ . '/includes/header.php'); ?>
     <main>
-        <?php 
+        <?php
         // Inclut le fichier contenant les données des œuvres
         include_once(__DIR__ . '/includes/oeuvres.php');
         // Vérifie si l'id est défini dans l'URL et s'il correspond à l'id d'une œuvre d'art.
@@ -23,6 +23,13 @@
             foreach ($oeuvres as $oeuvre) {
                 if ($_GET['id'] == $oeuvre['id']) {
                     $selected_artwork = $oeuvre;
+                    if (isset($oeuvre['enabled']) && $oeuvre['enabled']) {
+                        $selected_artwork = $oeuvre;
+                    } else {
+                        // Gère le cas où l'illustration n'est pas active
+                        echo "<p>Cette œuvre n'est pas disponible actuellement.</p>";
+                        exit();
+                    }
                     break; // Quitte la boucle une fois l’œuvre trouvée
                 }
             }
@@ -50,7 +57,7 @@
             ?>
                 </article>
     </main>
-    <?php 
+    <?php
     // Inclut le fichier contenant le footer
     require_once(__DIR__ . '/includes/footer.php'); ?>
 </body>
