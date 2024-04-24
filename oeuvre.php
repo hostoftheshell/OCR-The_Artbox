@@ -16,7 +16,7 @@
     <main>
         <?php
         // Inclut le fichier contenant les données des œuvres
-        include_once(__DIR__ . '/includes/oeuvres.php');
+        require_once(__DIR__ . '/includes/oeuvres.php');
         // Vérifie si l'id est défini dans l'URL et s'il correspond à l'id d'une œuvre d'art.
         if (isset($_GET['id'])) {
             $selected_artwork = null;
